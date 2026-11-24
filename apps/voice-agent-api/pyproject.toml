@@ -1,0 +1,32 @@
+# 主逻辑
+# 声明后端依赖、构建时包含的 Python 包和测试运行配置。
+
+[project]
+name = "voice-agent-api"
+version = "0.2.0"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.116,<1",
+  "httpx>=0.28,<1",
+  "langchain>=1.2,<2",
+  "langchain-core>=1.2,<2",
+  "langchain-deepseek>=1,<2",
+  "langgraph>=1,<2",
+  "pydantic>=2.11,<3",
+  "uvicorn>=0.35,<1",
+  "websockets>=15,<17",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-asyncio>=1,<2"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["voice_agent"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"

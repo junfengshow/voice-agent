@@ -1,0 +1,87 @@
+/* 主逻辑
+ * 定义语音设置表单在窄屏和宽屏下的布局及字段反馈样式。
+ */
+
+.dialog.voice-settings {
+  width: min(calc(100% - 24px), 620px);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+}
+
+.voice-settings__groups {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+.voice-settings fieldset {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  padding: 10px 12px 12px;
+  border: 1px solid #47465b;
+  border-radius: 9px;
+}
+.voice-settings legend {
+  padding: 0 5px;
+  color: #ded3ff;
+  font-size: 13px;
+  font-weight: 650;
+}
+.voice-settings__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.voice-settings__field {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  font-size: 12px;
+  color: #cbcddd;
+}
+.voice-settings__field input,
+.voice-settings__field select {
+  width: 100%;
+  min-height: 34px;
+  padding: 6px 8px;
+  border: 1px solid #55546b;
+  border-radius: 6px;
+  background: #1b1c27;
+  color: #f3f2fa;
+  font: inherit;
+}
+.voice-settings__field select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.voice-settings__toggle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+}
+.voice-settings__toggle input {
+  margin: 0;
+  accent-color: #a68dfb;
+}
+.voice-settings .voice-settings__hint {
+  margin: 12px 0 0;
+  font-size: 12px;
+}
+.voice-settings .voice-settings__error {
+  color: #ffbdc8;
+  margin: 8px 0 0;
+}
+.voice-settings__actions {
+  flex-wrap: wrap;
+}
+.voice-settings__clear {
+  margin-right: auto;
+}
+
+@media (max-width: 540px) {
+  .voice-settings__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

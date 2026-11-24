@@ -1,0 +1,137 @@
+/* 主逻辑
+ * 定义对话列表、转写与回复消息，以及搜索来源的显示样式。
+ */
+
+.conversation {
+  margin-top: 25px;
+  border: 1px solid #353747;
+  border-radius: 16px;
+  background: #1b1e29;
+}
+.conversation__heading {
+  min-height: 55px;
+  padding: 0 17px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #303342;
+}
+.conversation__heading svg {
+  color: var(--accent);
+}
+.conversation__heading h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 650;
+}
+.conversation__heading > span {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--muted);
+}
+.conversation__body {
+  max-height: min(54dvh, 500px);
+  min-height: 103px;
+  overflow: auto;
+}
+.empty {
+  min-height: 103px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.empty svg {
+  color: #988ba9;
+}
+.round {
+  padding: 16px 17px;
+}
+.round + .round {
+  border-top: 1px solid #303342;
+}
+.round__head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 9px;
+}
+.message {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 9px;
+  align-items: start;
+  border-radius: 10px;
+  background: #232634;
+  padding: 10px;
+}
+.message + .message {
+  margin-top: 8px;
+}
+.message--assistant {
+  background: #29263a;
+}
+.message__icon {
+  display: grid;
+  place-items: center;
+  height: 28px;
+  border-radius: 7px;
+  background: #383a4c;
+  color: #d4d7e8;
+}
+.message--assistant .message__icon {
+  background: #493b62;
+  color: #dac8ff;
+}
+.message__label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 650;
+  color: #c8c4d7;
+}
+.message__label small {
+  font-size: 10px;
+  color: #c6b4ff;
+}
+.message p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.message p.placeholder {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.sources {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.sources ul {
+  margin: 5px 0 0;
+  padding-left: 16px;
+}
+.sources li + li {
+  margin-top: 4px;
+}
+.sources a {
+  color: #d5c7fa;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.sources a:hover {
+  color: #f0e8ff;
+}
+.sources svg {
+  margin-left: 5px;
+  vertical-align: -1px;
+}

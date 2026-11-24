@@ -1,0 +1,146 @@
+/* 主逻辑
+ * 定义录音区、声波动效和按钮在不同录音阶段的样式。
+ */
+
+.recorder {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid #454058;
+  border-radius: 21px;
+  background: radial-gradient(ellipse at 50% 14%, #38304d 0%, #262439 50%, #1e202d 100%);
+  text-align: center;
+  box-shadow: 0 14px 46px #0d0d15a3;
+}
+
+.recorder__grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(#b8a0fa13 1px, transparent 1px),
+    linear-gradient(90deg, #b8a0fa13 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 72% 67% at 50% 22%, black 10%, transparent 100%);
+}
+.recorder__content {
+  position: relative;
+  padding: 31px 16px 25px;
+}
+.recorder__state {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #cbc0e8;
+  font-size: 12px;
+}
+.recorder__state > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  color: #ac99f4;
+}
+.recorder__state--active > span {
+  color: #ffa2b6;
+  box-shadow: 0 0 12px #f68da984;
+}
+.timer {
+  font-variant-numeric: tabular-nums;
+  color: #ffb4c5;
+}
+.recorder h1 {
+  font-size: clamp(27px, 4.2vw, 43px);
+  font-weight: 730;
+  margin: 12px 0 10px;
+  letter-spacing: 0.035em;
+}
+.waveform {
+  height: 86px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(2px, 0.45vw, 5px);
+  margin: 0 auto 15px;
+}
+.waveform span {
+  width: clamp(2px, 0.32vw, 4px);
+  height: var(--bar-height);
+  border-radius: 8px;
+  opacity: var(--bar-opacity);
+  background: linear-gradient(180deg, #d1baff 0%, #9678f8 90%);
+  transform: scaleY(0.75);
+}
+.waveform--active span {
+  animation: pulse 640ms var(--bar-delay) ease-in-out infinite alternate;
+}
+@keyframes pulse {
+  from {
+    transform: scaleY(0.32);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+.recorder__controls {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 10px;
+}
+.record-button,
+.audio-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+.record-button {
+  min-width: 142px;
+  min-height: 49px;
+  padding: 0 17px;
+  gap: 9px;
+  border: 1px solid #d2c3ff;
+  background: #bfa8ff;
+  color: #201831;
+  font-size: 14px;
+  font-weight: 700;
+}
+.record-button:not(:disabled):hover {
+  background-color: #d1c0ff;
+}
+.record-button--recording {
+  background: #ffc0cb;
+  border-color: #ffe2e7;
+}
+.record-button--recording:not(:disabled):hover {
+  background-color: #ffd2dc;
+}
+.audio-button {
+  width: 49px;
+  border: 1px solid #59516e;
+  background: #332c46;
+  color: #ded1ff;
+}
+.audio-button:not(:disabled):hover {
+  background-color: #4a3c61;
+}
+.recorder__hint {
+  margin: 14px 0 0;
+  color: #bab4cb;
+  font-size: 12px;
+}
+.spinner {
+  animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 680px) {
+  .recorder__content {
+    padding-top: 24px;
+  }
+}
